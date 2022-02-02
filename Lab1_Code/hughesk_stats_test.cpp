@@ -44,3 +44,40 @@ float BigKels::Stattys::getMax(std::vector<float>* data, int n){
 
     return maximum;
 }
+
+//call and calculate the getMean() function
+float BigKels::Stattys::getMean(std::vector<float>* data, int n){
+    float sum = 0;
+    float average;
+    float i;
+    
+    for(i=0; i<n; i++){
+        sum = sum + (*data)[i]; 
+    }
+
+    average = sum/n;
+
+    return average;
+}
+
+//call and calculate the getSD() function
+float BigKels::Stattys::getSD(std::vector<float>* data, int n, float average){
+    int i;
+    float sum = 0;
+    float mean = 0;
+    float STD = 0;
+    float info = 0;
+
+    for(i=0;i<n;i++){
+        info = pow(((*data)[i] - average), 2);
+        sum = sum + info;   
+    }
+
+    //again find the mean 
+    mean = sum/n;
+
+    //sqrt
+    STD = sqrt(mean);
+
+    return STD;
+}
