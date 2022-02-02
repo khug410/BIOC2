@@ -9,53 +9,61 @@ Program: This header file will define functions that estimate statistics about a
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 namespace BigKels{
     class Stattys{
         public:
 
+        void stats(float min, float max, float mean, float STD);
+
         /* This function will calculate the minimum of an input array 
-        @ param
-        @ returns: The minimum value
+        @ param data: a vector of data to find min value
+        @ param n: total vector size
+        @ returns: The minimum value of the vector
         */
-        void calcMin(float array[]){
-  
-        }
-        float getMin();
+        
+        float getMin(std::vector<float>* data, int n);
 
         /* This function will calculate the maximum of an input array 
-        @ param
-        @ returns: The maximum value
+        @ param data: a vector of data to find the maximum of
+        @ param n: total vector size
+        @ returns: The maximum value of the vector
         */
-        void calcMax(float array[]){
-        }
-        float getMax();
+        float getMax(std::vector<float>* data, int n);
 
         /* This function will calculate the mean of input arrays
-        @ param
-        @ returns: the mean
+        @ param data: a vector of data to find the mean of
+        @ param n: total vector size
+        @ returns: the mean value of the vector
         */
-        void calcMean(float array[]){
-        }
-        float getMean();
+        float getMean(std::vector<float>* data, int n);
 
         /* This function will calculate the standard deviation of input arrays
-        @ param
-        @ returns: The standard deviation
+        @ param data: a vector of data to find the standard deviation of
+        @ param n: total vector size
+        @ param mean: mean value that come from the getMean() function
+        @ returns: The standard deviation of the vector
         */
-        void calcSD(float array[]){
-        }
-        float getSD();
+       
+        float getSD(std::vector<float>* data, int n, float mean);
 
         /* This function will estimate a histogram from input arguments
-        @ param
+        @ param data:a vector of data to find histogram of
+        @ param n: total vector size
+        @ param mean: mean value that comes from the getMean() function
+        @ param STD: standard deviation value that comes from the the getSD() function
         @ returns: An array corresponding to quantity of data within each bin
         */
-        void histogram(float array[]){
-        }
-        float getHist();
+
+        float getHist(std::vector<float>* data, int n, float mean, float STD);
 
         private:
+
+            float min;
+            float max;
+            float mean;
+            float STD;
 
     
         };

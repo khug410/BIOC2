@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 
 // mySpace::yourSpace::myClass
@@ -21,10 +22,13 @@ namespace mySpace{
 				int get_num_students();
 				std::string get_name();
 				void set_num_student(int num);
+				void set_name(std::string newname);
+				std::vector<std::string>* get_classlist();
 
 			private:
 				int num_students;
-				std::string className;		
+				std::string className;	
+				std::vector<std::string> classlist;	
 				};
 	}
 }
