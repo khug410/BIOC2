@@ -1,7 +1,7 @@
 /*
 Author: Kelsey Hughes
 Date Created: 2/1/2022
-Program: This header file will define functions that estimate statistics about a set of data including mean, standard deviation, and a histogram
+Program: This file will define functions that estimate statistics about a set of data including mean, standard deviation, and a histogram
 */
 
 #include "hughesk_stats.hpp"
@@ -84,7 +84,7 @@ float BigKels::Stattys::getSD(std::vector<float>* data, int n, float average){
 
 //main function
 int main(int argc, char* argv[]){
-    /*
+    
     std::vector<float> data;
     //create a variable to hold the info
     BigKels::Stattys info;
@@ -99,6 +99,13 @@ int main(int argc, char* argv[]){
     float STD;
     int n = 0;
     int i = 0;
+
+    //ensure there is only one input argument corresponding to the path of the input data file
+    if(argc > 2){
+        std::cout <<"Incorrect Number of Arguments. Exiting Program. \n";
+        return 0; //error
+    }
+
 
     file = argv[1]; //prompted to enter file name
     std::ifstream list;
@@ -125,12 +132,12 @@ int main(int argc, char* argv[]){
     mean = info.getMean(&data, n);
     STD = info.getSD(&data,n,mean);
 
-    //print info
+    //print info for mean, max, min, and standard deviation
     std::cout << "Min value is: " << min << "\n";
     std::cout << "Max value is: " << max << "\n";
     std::cout << "Mean value is: " << mean << "\n";
     std::cout << "Standard Deviation value is: " << STD << "\n";
-    */
+    
 }
 
 
