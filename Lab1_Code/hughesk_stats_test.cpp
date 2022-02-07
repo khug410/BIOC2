@@ -82,6 +82,7 @@ float BigKels::Stattys::getSD(std::vector<float>* data, int n, float average){
     return STD;
 }
 
+/*
 //main function
 int main(int argc, char* argv[]){
     
@@ -138,7 +139,7 @@ int main(int argc, char* argv[]){
     std::cout << "Mean value is: " << mean << "\n";
     std::cout << "Standard Deviation value is: " << STD << "\n";
     
-}
+}*/
 
 
 
