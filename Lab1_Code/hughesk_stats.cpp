@@ -81,3 +81,34 @@ float BigKels::Stattys::getSD(std::vector<float>* data, int n, float average){
 
     return STD;
 }
+
+//call and calculate the histogram function
+std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int n, float average, float STD){
+
+    //create a vector for the histogram that will hold the data
+    std::vector<float> Total;
+
+    int k = 0;
+    int i = 0;
+    int d = 0;
+
+    //need to figure out how many data point should be in one bar
+    //~1000?, 2000?
+
+    //initialize the vector to 0
+    for(i=0; i<15; i++){
+        Total.push_back(0);
+    }
+
+    //calculate the width of the bin data
+    double width = 0.4 * STD; //given from lab manual
+
+    //bins should begin and end at +-3 std
+    double max = 0;
+    double min = 0;
+    max = average + (STD *3);
+    min = average - (STD *3);
+
+    //increment through the bins
+
+}
