@@ -21,6 +21,9 @@ int main(int argc, char* argv[]){
     //create a variable to hold the info
     BigKels::Stattys info;
 
+
+    //create variable to hold histogram data
+    std::vector<float> dataH;
     std::string file;
     std::string data1;
 
@@ -31,6 +34,7 @@ int main(int argc, char* argv[]){
     float STD;
     int n = 0;
     int i = 0;
+    float dataH1;
 
     //ensure there is only one input argument corresponding to the path of the input data file
     if(argc > 2){
@@ -62,14 +66,33 @@ int main(int argc, char* argv[]){
     min = info.getMin(&data, n);
     max = info.getMax(&data, n);
     mean = info.getMean(&data, n);
-    STD = info.getSD(&data,n,mean);
+    STD = info.getSD(&data, n, mean);
 
     //print info for mean, max, min, and standard deviation
     std::cout << "Min value is: " << min << "\n";
     std::cout << "Max value is: " << max << "\n";
     std::cout << "Mean value is: " << mean << "\n";
     std::cout << "Standard Deviation value is: " << STD << "\n";
-    
+
+    std::cout << "Histogram: \n";
+
+    dataH = info.getHist(&data, n, mean, STD);
+    int l;
+int temp = 0;
+
+    for(l=0; l<8; l++){
+        std::cout<< '|';
+
+        for(int j=0; j<dataH[l]; j++){
+            std::cout<< '=';
+            temp++;
+        }
+        std::cout<<'\n';
+    }
+    //total bins
+    std::cout<< "10 data points \n";
+
+    printf("temp: %d", temp);
 }
 
 

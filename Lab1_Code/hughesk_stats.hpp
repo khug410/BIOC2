@@ -60,7 +60,7 @@ namespace BigKels{
         @ returns: An array corresponding to quantity of data within each bin
         */
 
-        std::vector<float> getHist(std::vector<float>* data, int n, float mean, float STD);
+        std::vector <float> getHist(std::vector<float>* data, int n, float mean, float STD);
 
         private:
 

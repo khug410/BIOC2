@@ -83,32 +83,79 @@ float BigKels::Stattys::getSD(std::vector<float>* data, int n, float average){
 }
 
 //call and calculate the histogram function
-std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int n, float average, float STD){
+std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size, float average, float STD){
 
     //create a vector for the histogram that will hold the data
     std::vector<float> Total;
+    float points = 10; 
 
-    int k = 0;
-    int i = 0;
-    int d = 0;
+    // calculation based on lab sheet
+    double width = 0.4 * STD;
 
-    //need to figure out how many data point should be in one bar
-    //~1000?, 2000?
-
-    //initialize the vector to 0
-    for(i=0; i<15; i++){
-        Total.push_back(0);
-    }
-
-    //calculate the width of the bin data
-    double width = 0.4 * STD; //given from lab manual
-
-    //bins should begin and end at +-3 std
     double max = 0;
     double min = 0;
+
+    // min and max based on lab handout
     max = average + (STD *3);
     min = average - (STD *3);
 
-    //increment through the bins
+    // https://stackoverflow.com/questions/19252172/c-vector-trying-to-create-histogram
 
+    // initializing Total vector
+    for(int k=0; k<8; k++){
+        Total.push_back(0);
+    }
+
+    for(int i=0; i<size;i++){
+
+        if(((*data)[i]>min) && ((*data)[i] < (width + min))){
+            Total[0]++;
+        }
+        // add one from first width value to second
+        else if(((*data)[i] >= ((width*1) + min)) && ((*data)[i] < ((width*2) +min))){
+            Total[1]++;
+        }
+        // add one from second width to third
+        else if(((*data)[i] >= ((width*2) + min)) && ((*data)[i] < ((width*3) +min))){
+            Total[2]++;
+        }  
+        // ++ from third width value to fourth
+        else if(((*data)[i] >= ((width*3) + min)) && ((*data)[i] < ((width*4) +min))){
+            Total[3]++;
+        }  
+        // add one from fourth to fifth range
+        else if(((*data)[i] >= ((width*4) + min)) && ((*data)[i] < ((width*5) +min))){
+            Total[4]++;
+        } 
+
+        // adds one between fifth and sixth range
+        else if(((*data)[i] >= ((width*5) + min)) && ((*data)[i] < ((width*6) +min))){
+            Total[5]++;
+        }  
+
+        // add between sixth and 7th 
+        else if(((*data)[i] >= ((width*6) + min)) && ((*data)[i] < ((width*7) +min))){
+            Total[6]++;
+        }   
+
+        // add between 7 and 8 
+        else if(((*data)[i] >= ((width*7) + min)) && ((*data)[i] < ((width*8) +min))){
+            Total[7]++;
+        }  
+
+        // anything between 8 and max
+        else if(((*data)[i] >= ((width*8) + min)) && ((*data)[i] < max)){
+            Total[8]++;
+        }     
+    }  
+
+
+    // set values for vector to be easier to deal with
+    // dividing by 10 so each = means 10 data points
+    for(int d =0; d<8; d++){
+        Total[d] = Total[d]/points;
+
+    } 
+
+    return Total;
 }
