@@ -1,0 +1,15 @@
+# of Data Points: 30000
+Min value is: -1.4807
+Max value is: 2.3364
+Mean value is: 0.00113206
+Standard Deviation value is: 0.293669
+Histogram: 
+|=
+|=
+|==
+|===
+|=====
+|=======
+|==========
+|===========
+500 data points 

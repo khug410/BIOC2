@@ -78,21 +78,21 @@ int main(int argc, char* argv[]){
 
     dataH = info.getHist(&data, n, mean, STD);
     int l;
-int temp = 0;
+    //int temp = 0;
 
     for(l=0; l<8; l++){
         std::cout<< '|';
 
         for(int j=0; j<dataH[l]; j++){
             std::cout<< '=';
-            temp++;
+            //temp++;
         }
         std::cout<<'\n';
     }
     //total bins
-    std::cout<< "10 data points \n";
+    std::cout<< "500 data points \n";
 
-    printf("temp: %d", temp);
+    //printf("temp: %d", temp);
 }
 
 

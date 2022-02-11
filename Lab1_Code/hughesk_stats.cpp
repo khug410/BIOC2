@@ -87,7 +87,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     //create a vector for the histogram that will hold the data
     std::vector<float> Total;
-    float points = 10; 
+    float points = 500; 
 
     // calculation based on lab sheet
     double width = 0.4 * STD;
