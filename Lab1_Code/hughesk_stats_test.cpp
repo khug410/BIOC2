@@ -5,7 +5,7 @@ Program: This file will define functions that estimate statistics about a set of
 */
 
 #include "hughesk_stats.hpp"
-#include "hughesk_stats.cpp"
+//#include "hughesk_stats.cpp"
 
 #include <iostream>
 #include <math.h>
@@ -90,7 +90,7 @@ int main(int argc, char* argv[]){
         std::cout<<'\n';
     }
     //total bins
-    std::cout<< "500 data points \n";
+    std::cout<< "5 data points \n";
 
     //printf("temp: %d", temp);
 }

@@ -87,7 +87,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     //create a vector for the histogram that will hold the data
     std::vector<float> Total;
-    float points = 500; 
+    float points = 5; 
 
     // calculation based on lab sheet
     double width = 0.4 * STD;
@@ -106,7 +106,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
         Total.push_back(0);
     }
 
-    for(int i=0; i<size;i++){
+    for(int i=0; i<size;){
 
         if(((*data)[i]>min) && ((*data)[i] < (width + min))){
             Total[0]++;
@@ -146,12 +146,13 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
         // anything between 8 and max
         else if(((*data)[i] >= ((width*8) + min)) && ((*data)[i] < max)){
             Total[8]++;
-        }     
+        } 
+        i=i+1;    
     }  
 
 
     // set values for vector to be easier to deal with
-    // dividing by 10 so each = means 10 data points
+    // dividing by 10 so each = means 10 data points -- this can be changed depending on how
     for(int d =0; d<8; d++){
         Total[d] = Total[d]/points;
 
@@ -159,3 +160,4 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     return Total;
 }
+

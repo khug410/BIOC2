@@ -1,5 +1,6 @@
 #include "hughesk_corr.hpp"
 #include "hughesk_stats.hpp"
+#include <math.h>
 
 
 //adding logic for the correlation function
@@ -19,57 +20,62 @@ float BigKelsCorr::correlationFunctions::corrcof(std::vector<float>* data1, std:
 
     float xSum = 0;
 	float ySum = 0; 
-	float xMean = 0; // using mean function 
-	float yMean = 0;; // using mean function 
+	float totSum = 0;
+	float Mean1 = 0; // using mean function 
+	float Mean2 = 0; // using mean function 
+	float sumSquared = 0;
+	float sumSquared2 = 0;
+	float meanSquared = 0;
+	float meanSquared2 = 0;
 	float xySum = 0;
     float xMeanSquared = 0;
 	float yMeanSquared = 0; 
+	float cor = 0;
 
 
 
 	int i = 0; 
 
-	// incrementing through the arrays 
-	for(i=0; i<n; i++) 
-	{
-		
-		// y sum 
-		ySum = ySum + (*data2)[i]; 
-		
-		// y squared  
-		ySquared = ySum * ySum; 
-	
-		// x sum
-		xSum = xSum + (*data1)[i]; 
-		
-		// x squared 
-		xSquared = xSum * xSum; 
-		 
-		// find total
-		xySum = xSum + ySum; 
-
-		 
+	// incrementing through the arrays and calculating stats needed in the equation
+	for(i=0; i<n; i++) {
+		totSum = totSum + (*data1)[i] * (*data2)[i];
 	}
-	
-	// finding the mean of x and y 
-     xMean = data.getMean(data1, n); // finding the mean of x
-     yMean = data.getMean(data2, n); // finding the mean of y
-    // mean squared 
-	xMeanSquared = xMean * xMean; // mean squared  
-	yMeanSquared = yMean * yMean; // mean squared 
-	
-	// finding numerator & denominator
-	num = ((n * xSum * ySum) -  (n * xMeanSquared));
-        
-	// 
-	leftDenom = ((n * xSquared) -  (n * xMeanSquared)); 
-	rightDenom = ((n * ySquared) - (n * yMeanSquared)); 
-	
-	// denominator final
-	denom = sqrt(leftDenom * rightDenom); 
-	 
-	// return value
-	corr = num/denom; 
 
-	return corr; 
+	//get both of the means
+	Mean1 = data.getMean(data1, n);
+	Mean2 = data.getMean(data2, n);
+
+	//calculate the numerator of the equation
+	num = totSum - (n*Mean1*Mean2); 
+
+	for (int i=0; i<n; i++){
+		sumSquared = sumSquared + (*data1)[i] * (*data1)[i];
+	}
+
+	//get the new mean for first array
+	meanSquared = data.getMean(data1,n);
+	meanSquared = meanSquared * meanSquared;
+
+	for(int i = 0; i<n; i++){
+		sumSquared2 = sumSquared2 + (*data2)[i] * (*data2)[i];
+	}
+
+	//get the new mean for second array
+	meanSquared2 = data.getMean(data2,n);
+	meanSquared2 = meanSquared2 * meanSquared2;
+
+
+	//calculate denominator based on equation
+	leftDenom = sumSquared - (n*meanSquared);
+	rightDenom = sumSquared2 - (n*meanSquared2);
+
+	denom = leftDenom*rightDenom;
+
+	denom = sqrt(denom);
+
+	cor = num/denom;
+
+	return cor;
+
+
 }

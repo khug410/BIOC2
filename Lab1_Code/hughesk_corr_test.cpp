@@ -1,7 +1,7 @@
 #include "hughesk_corr.hpp"
 #include "hughesk_stats.hpp"
-#include "hughesk_corr.cpp"
-#include "hughesk_stats.cpp"
+//#include "hughesk_corr.cpp"
+//#include "hughesk_stats.cpp"
 #include <math.h>
 #include <iostream>
 #include <fstream>
@@ -31,8 +31,8 @@ int main(int argc, char* argv[]){
     int i =0;
 
     //ensure the program takes in two arguments
-    if(argc < 2){
-        std::cout << "Need two arguments. \n";
+    if(argc < 3){
+        std::cout << "Need more arguments. \n";
         return 0;
     }
 

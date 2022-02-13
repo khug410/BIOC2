@@ -6,8 +6,11 @@
 #prompt user for the concentration level to analyze
 echo "Enter the concentration level to be analyzed"
 read levelConcentration
-echo "The concentration level is: $levelConcentration"
+echo "The concentration level is: ${levelConcentration}"
 
+
+if [ ${levelConcentration} == '0' ] || [ ${levelConcentration} == '5' ]
+then
 touch concentrationData.txt
 
 #concate the files based on concentration level
@@ -21,7 +24,7 @@ touch catted_input.dat
 cp ./EEG_DATA/concentrationData.txt ./catted_input.dat
 
 #execute the histogram program 
-g++ -o out1 hughesk_stats_test.cpp -lm
+g++ -o out1 hughesk_stats.cpp hughesk_stats_test.cpp -lm
 
 touch histiedata_$levelConcentration.txt
 
@@ -32,3 +35,8 @@ mv histiedata_$levelConcentration.txt ./EEG_DATA/histiedata_$levelConcentration.
 
 echo "The output is stored "
 find $PWD -type f | grep "histiedata_$levelConcentration.txt"
+
+else
+    echo "She is not a valid choice"
+    exit 1
+fi 
