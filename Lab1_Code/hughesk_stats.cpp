@@ -87,7 +87,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     //create a vector for the histogram that will hold the data
     std::vector<float> Total;
-    float points = 5; //this variable will change depending on the number of data points
+    float points = 500; //this variable will change depending on the number of data points
     // width of bin based on the lab handout
     double width = 0.4 * STD;
     double max = 0;
@@ -161,7 +161,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
         // anything between 12 and max
         else if(((*data)[i] >= ((width*12) + min)) && ((*data)[i] < max)){
-            Total[14]++;
+            Total[12]++;
         }    
     }  
 
@@ -173,6 +173,7 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     } 
 
+    //return wthe value for each bin as an array
     return Total;
 }
 

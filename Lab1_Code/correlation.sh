@@ -65,6 +65,7 @@ then
         for i in {1..59}
 
         do
+            #do same as above!
 
             echo -n "${i}vs$((i+1)), " >> conc_corr_${concentrationLevel}.csv
 

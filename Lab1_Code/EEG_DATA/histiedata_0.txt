@@ -16,5 +16,5 @@ Histogram:
 |=====
 |===
 |==
-|
+|===
 500 data points 

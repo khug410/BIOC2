@@ -81,7 +81,7 @@ int main(int argc, char* argv[]){
     int l;
     //int temp = 0;
 
-    //print out histogram = for each bin
+    //print out histogram = for each bin - print out array value
     for(l=0; l<13; l++){
         std::cout<< '|';
 

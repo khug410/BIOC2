@@ -14,7 +14,7 @@ float BigKelsCorr::correlationFunctions::corrcof(std::vector<float>* data1, std:
 
 	BigKels::Stattys data; //instantiate a variable for mean calculation
 	
-	// variables needed for calculating the correlation coefficient 
+	// variables needed for calculating the correlation coefficient -- some of these ended up being not necessary was just trying to work through equation
 	float num  = 0; // numerator 
 	float denom = 0; // denominator
 	float leftDenom = 0; // left half of denominator
@@ -53,6 +53,7 @@ float BigKelsCorr::correlationFunctions::corrcof(std::vector<float>* data1, std:
 	//calculate the numerator of the equation
 	num = totSum - (n*Mean1*Mean2); 
 
+	//two for loops to get means on two different data sets
 	for (int i=0; i<n; i++){
 		sumSquared = sumSquared + (*data1)[i] * (*data1)[i];
 	}
