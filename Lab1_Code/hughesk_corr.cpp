@@ -1,3 +1,8 @@
+/*Name: Kelsey Hughes
+Date: 2/6/22
+Details: This is the file that defines the logic for a program that will estimate the correlation coefficient between two data sets
+*/
+
 #include "hughesk_corr.hpp"
 #include "hughesk_stats.hpp"
 #include <math.h>
@@ -56,6 +61,7 @@ float BigKelsCorr::correlationFunctions::corrcof(std::vector<float>* data1, std:
 	meanSquared = data.getMean(data1,n);
 	meanSquared = meanSquared * meanSquared;
 
+	//use for loop to get sum of the squared data
 	for(int i = 0; i<n; i++){
 		sumSquared2 = sumSquared2 + (*data2)[i] * (*data2)[i];
 	}

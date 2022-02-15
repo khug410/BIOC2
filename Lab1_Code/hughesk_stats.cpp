@@ -87,26 +87,26 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
 
     //create a vector for the histogram that will hold the data
     std::vector<float> Total;
-    float points = 5; 
-
-    // calculation based on lab sheet
+    float points = 5; //this variable will change depending on the number of data points
+    // width of bin based on the lab handout
     double width = 0.4 * STD;
-
     double max = 0;
     double min = 0;
-
-    // min and max based on lab handout
+    // min and max of each bin based on lab handout
     max = average + (STD *3);
     min = average - (STD *3);
 
+//Sources:
     // https://stackoverflow.com/questions/19252172/c-vector-trying-to-create-histogram
+    // discussed histogram logic with Cassie and Gabbie
+
 
     // initializing Total vector
-    for(int k=0; k<8; k++){
+    for(int k=0; k<13; k++){
         Total.push_back(0);
     }
 
-    for(int i=0; i<size;){
+    for(int i=0; i<size;i++){
 
         if(((*data)[i]>min) && ((*data)[i] < (width + min))){
             Total[0]++;
@@ -142,18 +142,33 @@ std::vector<float> BigKels::Stattys::getHist(std::vector<float>* data, int size,
         else if(((*data)[i] >= ((width*7) + min)) && ((*data)[i] < ((width*8) +min))){
             Total[7]++;
         }  
-
-        // anything between 8 and max
-        else if(((*data)[i] >= ((width*8) + min)) && ((*data)[i] < max)){
+        // add between 8 and 9 
+        else if(((*data)[i] >= ((width*8) + min)) && ((*data)[i] < ((width*9) +min))){
             Total[8]++;
+        }  
+        // add between 9 and 10 
+        else if(((*data)[i] >= ((width*9) + min)) && ((*data)[i] < ((width*10) +min))){
+            Total[9]++;
+        }  
+        // add between 10 and 11 
+        else if(((*data)[i] >= ((width*10) + min)) && ((*data)[i] < ((width*11) +min))){
+            Total[10]++;
         } 
-        i=i+1;    
+        // add between 11 and 12 
+        else if(((*data)[i] >= ((width*11) + min)) && ((*data)[i] < ((width*12) +min))){
+            Total[11]++;
+        }   
+
+        // anything between 12 and max
+        else if(((*data)[i] >= ((width*12) + min)) && ((*data)[i] < max)){
+            Total[14]++;
+        }    
     }  
 
 
     // set values for vector to be easier to deal with
     // dividing by 10 so each = means 10 data points -- this can be changed depending on how
-    for(int d =0; d<8; d++){
+    for(int d =0; d<13; d++){
         Total[d] = Total[d]/points;
 
     } 

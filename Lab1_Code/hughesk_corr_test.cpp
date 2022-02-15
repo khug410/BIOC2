@@ -1,3 +1,7 @@
+/*Name: Kelsey Hughes
+Date: 2/6/22
+Details: This main file will test the correlation coefficient function.
+*/
 #include "hughesk_corr.hpp"
 #include "hughesk_stats.hpp"
 //#include "hughesk_corr.cpp"

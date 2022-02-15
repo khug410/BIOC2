@@ -10,52 +10,47 @@ echo "Enter the concentration level to analyze: "
 read concentrationLevel
 echo "Chosen concentration is ${concentrationLevel}"
 
- 
 
-# first if statement is to check for a valid file name
-
+#error checking to see if it is a valid input
 if [ ${concentrationLevel} == '0' ] || [ ${concentrationLevel} == '5' ]
 
 then
 
- 
-
-    #use a loop to compare the files consecutively
+    #compile the correlation file
 
     g++ -o outc hughesk_corr_test.cpp hughesk_corr.cpp hughesk_stats.cpp
 
  
 
-    # create file and delete if it already exists
+    #avoids excess storage
 
     if [ "./conc_corr_${concentrationLevel}.csv" ]
 
     then
 
-        echo "Deleting the already existing file with that concentration"
+        echo "Delete existing file"
 
         rm -r "./conc_corr_${concentrationLevel}.csv"
 
     fi
-
- 
-
+    #create new file
     touch /home/hughesk/BIOC2/Lab1_Code/conc_corr_${concentrationLevel}.csv
 
  
 
-    # file names are slightly different
+    #file names are slightly different in terms of a . so have to do it in two if statements
 
     if [ ${concentrationLevel} == '0' ]  
-
     then
-
+        #do it for all 59 epochs
         for i in {1..59}
 
         do
 
+            #print 1vs2, 2vs3, etc
             echo -n "${i}vs$((i+1)), " >> conc_corr_${concentrationLevel}.csv
 
+            #send data to csv file every time
             ./outc "/home/hughesk/BIOC2/Lab1_Code/EEG_DATA/ERP0${concentrationLevel}${i}.txt" "/home/hughesk/BIOC2/Lab1_Code/EEG_DATA/ERP0${concentrationLevel}$((i+1)).txt" >> /home/hughesk/BIOC2/Lab1_Code/conc_corr_${concentrationLevel}.csv
 
 

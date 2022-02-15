@@ -1,7 +1,7 @@
 /*
 Author: Kelsey Hughes
 Date Created: 2/1/2022
-Program: This file will define functions that estimate statistics about a set of data including mean, standard deviation, and a histogram
+Program: This file serves as the main function for running and testing the statistics classes.
 */
 
 #include "hughesk_stats.hpp"
@@ -43,19 +43,20 @@ int main(int argc, char* argv[]){
     }
 
 
-    file = argv[1]; //prompted to enter file name
+    file = argv[1]; //enter file name as the only argument
     std::ifstream list;
-    list.open(file);
+    list.open(file); //open the file
 
-    //read the file -- count the number of data point
+    //read the file -- count the number of data points
     if(list.is_open()){
         
         while(std::getline(list, data1)){
             data.push_back(stof(data1));
-            n++; //prints the number of data pointa
+            n++; //increments the number of points until there is no data points left
         }
     }
     else{
+        //error checking
         std::cout<<"File cannot be found" << "\n";
     }
 
@@ -80,7 +81,8 @@ int main(int argc, char* argv[]){
     int l;
     //int temp = 0;
 
-    for(l=0; l<8; l++){
+    //print out histogram = for each bin
+    for(l=0; l<13; l++){
         std::cout<< '|';
 
         for(int j=0; j<dataH[l]; j++){
@@ -89,8 +91,8 @@ int main(int argc, char* argv[]){
         }
         std::cout<<'\n';
     }
-    //total bins
-    std::cout<< "5 data points \n";
+    //print out what each equal sign is equivalent to
+    std::cout<< "500 data points \n";
 
     //printf("temp: %d", temp);
 }
