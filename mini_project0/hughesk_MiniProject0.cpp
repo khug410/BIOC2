@@ -30,6 +30,8 @@ void MiniProject0::TimeHacking::hackTime(){
 
 int main(int argc, char* argv[]){
     std::string object;
+
+    //print input arguments to the screen
     std::cout <<"What object do you want to hack? \n";
     char store[50];
     scanf("%s", store);
@@ -41,12 +43,16 @@ int main(int argc, char* argv[]){
     std::cout <<"The object is: " << store << "\n";
     std::cout <<"The number of seconds for hacking is: " << seconds << "\n";
 
+    //create time hacking object
     MiniProject0::TimeHacking hackers(object);
 
+    //using the get methods, print to the console what the user input
     hackers.setTimeToHack(seconds);
     hackers.getTimeToHack();
     hackers.getObjectToHack();
+    //indicate that the hacking is in progress
     std::cout << "Hacking object " << object << "currently \n";
+    //run the hacktime function
     hackers.hackTime();
     std::cout << "Hacking is Complete \n";
     return 0;
