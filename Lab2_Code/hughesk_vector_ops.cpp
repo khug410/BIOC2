@@ -66,3 +66,4 @@ std::vector<float> Vecties::vectiesFunctions::division(std::vector<float>* data,
 
 	return div;
 }
+
