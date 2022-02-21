@@ -108,7 +108,7 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
-    std::cout << "data point1: " << dataPoint1 << "\n";
+    //std::cout << "data point1: " << dataPoint1 << "\n";
     if(ls2.is_open()){
         while(std::getline(ls2,d2)){
             array2.push_back(stof(d2));
@@ -119,7 +119,7 @@ int main(int argc, char* argv[]){
         std::cout << "Data file 2 cannot be found." << "\n";
         return 0;
     }
-    std::cout << "data point2: " << dataPoint2 << "\n";
+    //std::cout << "data point2: " << dataPoint2 << "\n";
 
     if(ls3.is_open()){
         while(std::getline(ls3,d3)){
@@ -131,7 +131,7 @@ int main(int argc, char* argv[]){
         std::cout << "Data file 3 cannot be found." << "\n";
         return 0;
     }
-    std::cout << "data point3: " << dataPoint3 << "\n";
+   // std::cout << "data point3: " << dataPoint3 << "\n";
 
     if(ls4.is_open()){
         while(std::getline(ls4,d4)){
@@ -144,7 +144,7 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
-    std::cout << "data point4: " << dataPoint4 << "\n";
+    //std::cout << "data point4: " << dataPoint4 << "\n";
     //check that the number of genes requested 
     int num = 6188;
     if(genes > num){
@@ -233,7 +233,7 @@ int main(int argc, char* argv[]){
     //close the file
     outFile5.close();
 /*
-    //also print the values to the screen
+    //also print the values to the screen stictly for testing
     for(int counter=0; counter<6118; counter++){
         std::cout << "Log Ratio : " << logRatio[counter] << "\n";
     }
