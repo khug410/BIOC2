@@ -166,7 +166,7 @@ int main(int argc, char* argv[]){
         redData = dataPoint1;
         
     }
-    std::cout << "red data : " << redData << "\n";
+    //std::cout << "red data : " << redData << "\n";
 
     if(dataPoint3 == dataPoint4){
         greenData = dataPoint3;
@@ -194,7 +194,7 @@ int main(int argc, char* argv[]){
     greenNorm = vectorData.division(&sub2, greenData, meanGreen);
 
     std::vector<float> logRatio;
-    std::cout << "Red Data : " << redData << "\n";
+    //std::cout << "Red Data : " << redData << "\n";
     //calculate the log intensity 
     if(num = redData){
         processingData.log(&redNorm, redData,&greenNorm,&logRatio);

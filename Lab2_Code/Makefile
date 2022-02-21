@@ -1,45 +1,31 @@
+# Kelsey Hughes
+# Lab 2 Makefile 
+
+# Reminders for me
+#   $@ - name of target 
+#   $^ - list of dependencies 
+#   $< - first dependencies 
+
+# Variable definitions:
 CC = g++
-SHELL = /bin/bash
-CFLAGS = -fpic -g
-LIBS = -lm #math library
+SHELL = /bin/bash 
+CFLAGS = -fpic -g 
+#CFLAGS = -
 
+# code from lab 1 stats stuff
+hughesk_stats.o: hughesk_stats.cpp hughesk_stats.hpp
+	$(CC) -c $^
 
-
-#compiles stats code
-hughesk_stats.o: hughesk_stats.cpp hughesk_stats.hpp 
-	$(CC) $(CFLAGS) -o $@ $< $(LIBS) 
-	 
-
-statslib: hughesk_stats.cpp hughesk_stats.hpp
-	$(CC) -L./ $^ -o $@ -lvect -Wl,-rpath=./
-
-stats.so: hughesk_stats.cpp hughesk_stats.hpp
-	$(CC) -shared $^ -o $@
-
-#compile vector_ops
+# code from lab 2 vector stuff
 hughesk_vector_ops.o: hughesk_vector_ops.cpp hughesk_vector_ops.hpp
-	$(CC) $(CFLAGS) -o $@ $< $(LIBS) 
-
-vectorlib: hughesk_vector_ops.cpp hughes_vector_ops.hpp
-	$(CC) -L./ $^ -o $@ -lvect -Wl,-rpath=./
-
-vect.so: hughesk_vector_ops.cpp hughesk_vector_ops.hpp 
-	$(CC) -shared $^ -o $@
-#compiles processing code
-hughesk_processing.o: hughesk_pre_processing.cpp hughesk_pre_processing.hpp 
-	$(CC) $(CFLAGS) -o $@ $< $(LIBS)  
-
-processinglib: hughesk_pre_processing.cpp hughesk_pre_processing.hpp
-	$(CC) -L./ $^ -o $@ -lvect -Wl,-rpath=./
-
-processing.so: hughesk_pre_processing.cpp hughesk_pre_processing.hpp
-	$(CC) -shared $^ -o $@
+	$(CC) -c $^
 
 
-# new target to make all targets
-makeall: hughesk_vectors_ops.o vectorlib vect.so hughesk_stats.o statslib stats.so hughesk_processing.o processinglib processing.so  
+hughesk_pre_processing.o: hughesk_pre_processing.cpp hughesk_pre_processing.hpp hughesk_stats.o hughesk_vector_ops.o
+	$(CC) -o $@ $^
 
-# clean directory from .o files 
-clean: hughesk_stats.o hughesk_processing.o hughesk_vector_ops.o vect.so processing.so stats.so 
-	rm *.o 
-	rm *.so 
+all: hughesk_pre_processing.o
+
+clean:
+	rm -f *.o
+	rm -f *.gch
