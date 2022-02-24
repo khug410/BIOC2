@@ -12,15 +12,15 @@ SHELL = /bin/bash
 CFLAGS = -fpic -g 
 #CFLAGS = -
 
-# code from lab 1 stats stuff
+# stats
 hughesk_stats.o: hughesk_stats.cpp hughesk_stats.hpp
 	$(CC) -c $^
 
-# code from lab 2 vector stuff
+# vector
 hughesk_vector_ops.o: hughesk_vector_ops.cpp hughesk_vector_ops.hpp
 	$(CC) -c $^
 
-
+# pre-processing
 hughesk_pre_processing.o: hughesk_pre_processing.cpp hughesk_pre_processing.hpp hughesk_stats.o hughesk_vector_ops.o
 	$(CC) -o $@ $^
 
