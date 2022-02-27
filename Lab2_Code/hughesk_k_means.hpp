@@ -40,7 +40,11 @@ namespace BigKelsCluster {
 
         //getter funcion for cluster data
         //@returns: the vector with data points from cluster
-        std::vector<float> getData();
+        std::vector<float>* getData();
+
+        //getter for final data
+        //@returns: the vector of final data
+        float getFinalData(int final);
 
         //distance function of the distance from the data to the cluster object
         //@param datapoint: data points
