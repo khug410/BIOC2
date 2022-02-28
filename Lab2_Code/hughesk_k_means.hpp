@@ -32,7 +32,7 @@ namespace BigKelsCluster {
 
         //getter function for mean
         //@return: cluster mean
-        float getMean();
+        float get_Mean();
 
         //setter for cluster data
         //@param data: vector of data in the cluset
