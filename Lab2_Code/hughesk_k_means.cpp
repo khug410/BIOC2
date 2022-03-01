@@ -61,6 +61,9 @@ int main(int argc, char* argv[]){
     logStream.open(fileOne);
     //open both the data files
     int fileOneSize =0;
+    float num;
+
+
     if(logStream.is_open()){
         while(std::getline(logStream, dataOne)){
             logRatio.push_back(stof(dataOne));
@@ -72,10 +75,11 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
+    
+
     //read in data file 2 (gene file)
     std::string dataTwo; //temp variable to hold data
-    std::ifstream geneStream;
-    geneStream.open("gene_list.txt");
+    std::ifstream geneStream ("gene_list.txt");
     std::vector<std::string> geneDataStore; //store file data in here
     //open both the data files
     int fileTwoSize=0;
@@ -97,18 +101,21 @@ int main(int argc, char* argv[]){
     float suppressedGenes;
     //set the initiail mean of the suppressed gene
     float meanSuppressed = -0.5;
+    int numSuppressed = 0;
 
     std::vector<float> stationaryData;
     int stationary =0;
     float stationaryGenes;
     //set the initial mean of stationary
     float meanStationary = 0;
+    int numStationary = 0;
 
     std::vector<float> expressedData;
     int expressed=0;
     float expressedGenes;
     //set the initial mean of expressed
     float meanExpressed = 0.5;
+    int numExpressed = 0;
 
     //set the names of the clusters
     supp.setName("SuppressedGene");
@@ -122,7 +129,7 @@ int main(int argc, char* argv[]){
 
     float initialData; //initialize a data variable to hold the data while sorting is happening
     
-    float criteria = 1.0;
+    float criteria = 1.0; //initialize it to anything above 0.0001 so it will enter while loop
 
 
     //create the output files
@@ -149,6 +156,7 @@ int main(int argc, char* argv[]){
 while(criteria >= 0.0001){
     //go through each data point in the logRatio file
     for(int j=0; j<fileOneSize; j++){
+    
 
         initialData = logRatio[j];
 
@@ -156,7 +164,7 @@ while(criteria >= 0.0001){
         suppressedGenes = supp.dist(initialData);
         stationaryGenes = stat.dist(initialData);
         expressedGenes = expr.dist(initialData);
-        std::cout << expressedGenes << "\n";
+       // std::cout << suppressedG << "\n";
 
         //next. re-assign the data point to the closest cluster
 
@@ -178,11 +186,20 @@ while(criteria >= 0.0001){
         }
 
     }
+    supp.getData() -> clear();
+    stat.getData() -> clear();
+    expr.getData() -> clear();
+
+
+    //save final value of numbers of these three clusters
+    numSuppressed = suppressed;
+    numStationary = stationary;
+    numExpressed = expressed;
 
     //next, recalculate the cluster means
     newSuppMean = statsDat.getMean(supp.getData(),suppressed);
     newStatMean = statsDat.getMean(stat.getData(),stationary);
-    newExprMean = statsDat.getMean(expr.getData(), expressed);
+    newExprMean = statsDat.getMean(expr.getData(),expressed);
 
     //next, calculate the sum of the absolute difference of the previous and current means
     finalSuppMean = supp.get_Mean() - newSuppMean;
@@ -198,58 +215,59 @@ while(criteria >= 0.0001){
     stat.setMean(newStatMean);
     expr.setMean(newExprMean);
 
-    supp.getData() -> clear();
-    stat.getData() -> clear();
-    expr.getData() -> clear();
 
 
-    
+    //RESET counters back to zero
+    suppressed = 0;
+    stationary = 0;
+    expressed = 0;
+
     }//end while loop
 
 
+    //next, output final cluster means to standard output 
+	std::cout << "Suppressed Gene Final Mean: " << newSuppMean << "\n";
+	std::cout << "Stationary Gene Final Mean: " << newStatMean << "\n";
+	std::cout << "Expressed Gene Final Mean: " << newExprMean << "\n"; 
+	std::cout << "Criteria: " << criteria << "\n";
 
     
     //write three output files, one for each of the final clusters: expressed_genes.txt, suppressed_genes.txt, stationary_genes.txt
     //each file should list the genes by name
-
-/*
     //a negative log ratio indicates suppression, log of zero is stationary, a positive log ratio indicates expression
     //supp<stationary<expressed -> 
+    char gene_string[100];
+
+    float stat_min = statsDat.getMin(stat.getData(),numStationary);
+    float stat_max = statsDat.getMax(stat.getData(),numStationary);
 
 
-    int count1 = 0;
-    int count2 = 0;
-    
-   // std::cout << stat.getFinalData(count2);
-    //std::cout <<logRatio[count1];
-    //std::cout << stationary;
-    if((finalSuppMean < finalStatMean) && (finalStatMean < finalExprMean)){
-        //list the genes by name
-        for(count1 = 0; count1 < fileOneSize; count1++){
-            //increment through each cluster
-            for(count2 = 0; count2 < suppressed; count2++){
-                if(logRatio[count1] == supp.getFinalData(count2)){
-                    suppressedFile << geneDataStore[count1];
-                    suppressedFile << "\n";
-                }
+    //std::cout << stat_min << "\n";
+    //std::cout << stat_max << "\n";
+    //std::cout << num << "\n";
+    if(logStream.is_open() && geneStream.is_open()){
+        
+        for(int j = 0; j < numStationary; j++){
+            initialData = logRatio[j];
+            //std::cout << "hi";
+            // >> gene_string;
+            if(initialData < stat_min){
+                suppressedFile << geneDataStore[j] << " " << initialData << "\n";
+                //std::cout << gene_string << " " << initialData << "\n";
             }
-            for(count2 = 0; count2 < stationary; count2++){
-                if(logRatio[count1] == stat.getFinalData(count2)){
-                    stationaryFile << geneDataStore[count1];
-                    stationaryFile << "\n";
-                }
+            else if(initialData > stat_max){
+                expressedFile << geneDataStore[j] << " " << initialData << "\n";
+                //std::cout << gene_string << " " << initialData << "\n";
             }
-            for(count2; count2 < expressed; count2++){
-                if(logRatio[count1] == expr.getFinalData(count2)){
-                    expressedFile << geneDataStore[count1];
-                    expressedFile << "\n";
-                }
+            else{
+                stationaryFile << geneDataStore[j] << " " << initialData << "\n";
+                //std::cout << gene_string << " " << initialData << "\n";
             }
         }
     }
 
 
-}*/
+
     //close all the data files
     suppressedFile.close();
     stationaryFile.close();
