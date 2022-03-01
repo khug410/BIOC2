@@ -89,7 +89,9 @@ int main(int argc, char* argv[]){
     //ls5.open(f5);
 
     long arg = strtol(argv[6], NULL, 10);
+    //long arg = 6118
 	int genes = arg; 
+   // int genes = 6118;
 
     if(argc > 8) {
 		std::cout << "Incorrect arguments. Exiting program.\n";

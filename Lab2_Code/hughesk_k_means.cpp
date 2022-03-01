@@ -241,13 +241,14 @@ while(criteria >= 0.0001){
     float stat_min = statsDat.getMin(stat.getData(),numStationary);
     float stat_max = statsDat.getMax(stat.getData(),numStationary);
 
+    int totSum = numSuppressed + numStationary + numExpressed;
 
-    //std::cout << stat_min << "\n";
-    //std::cout << stat_max << "\n";
-    //std::cout << num << "\n";
+    //std::cout << "The number of Stationary Genes: "  << numStationary << "\n";
+    //std::cout << "The number of Suppressed Genes: " << numSuppressed << "\n";
+    //std::cout << "The number of Expressed Genes: " << numExpressed << "\n";
     if(logStream.is_open() && geneStream.is_open()){
         
-        for(int j = 0; j < numStationary; j++){
+        for(int j = 0; j < totSum; j++){
             initialData = logRatio[j];
             //std::cout << "hi";
             // >> gene_string;
