@@ -19,7 +19,7 @@ then
     fi 
 
     for i in {0..6}
-    do
+    do 
     #preprocess every time point
     ./$out $dir/red_$i.dat $dir/red_background_$i.dat $dir/green_$i.dat $dir/green_background_$i.dat log_ratio_input_$i.dat $microPoints
 

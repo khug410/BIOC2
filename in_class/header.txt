@@ -1,0 +1,4 @@
+grep -w float GabeTheBabe::StatsBro RohdeG_stats.cpp{}{}{}float GabeTheBabe::StatsBro::meanValue(std::vector<float>* data, int size){
+float GabeTheBabe::StatsBro::standardDev(std::vector<float>* data, int size, float average){
+float GabeTheBabe::StatsBro::minVal(std::vector<float>* data, int size){
+float GabeTheBabe::StatsBro::maxValue(std::vector<float>* data, int size){

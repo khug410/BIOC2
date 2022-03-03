@@ -10,16 +10,17 @@ read geneName
 for i in {0..6}
 do
 
+
 echo "In log_ratio_$i.dat:"
-    if grep -F ${geneName} suppressed_genes_$i.txt 
+    if grep -q ${geneName} suppressed_genes_$i.txt
     then
     echo "This gene is suppressed"
 
-    elif grep -F ${geneName} expressed_genes_$i.txt
+    elif grep -q ${geneName} expressed_genes_$i.txt
     then
     echo "This gene is expressed"
 
-    elif grep -F ${geneName} stationary_genes_$i.txt 
+    elif grep -q ${geneName} stationary_genes_$i.txt
     then
     echo "This gene is stationary"
     fi

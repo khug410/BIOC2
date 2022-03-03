@@ -1,62 +1,83 @@
 Time point 0:
-Suppressed Gene Final Mean: -0.0332724
-Stationary Gene Final Mean: 0.0525512
-Expressed Gene Final Mean: 0.144521
-Criteria: 4.58248e-05
-number of suppressed genes: 1805
-number of stationary genes: 2725
-number of expressed genes: 1588
+Suppressed Gene Final Mean: -0.0991385
+Stationary Gene Final Mean: -0.0131831
+Expressed Gene Final Mean: 0.0787717
+Criteria: 0
+The number of Stationary Genes: 2727
+The number of Suppressed Genes: 1816
+The number of Expressed Genes: 1575
+number of suppressed genes: 1816
+number of stationary genes: 2727
+number of expressed genes: 1575
 
 Time point 1:
-Suppressed Gene Final Mean: -0.440414
-Stationary Gene Final Mean: 0.0216875
-Expressed Gene Final Mean: 0.33677
+Suppressed Gene Final Mean: -0.504427
+Stationary Gene Final Mean: -0.0423256
+Expressed Gene Final Mean: 0.272756
 Criteria: 0
+The number of Stationary Genes: 3719
+The number of Suppressed Genes: 694
+The number of Expressed Genes: 1705
 number of suppressed genes: 694
 number of stationary genes: 3719
 number of expressed genes: 1705
 
 Time point 2:
-Suppressed Gene Final Mean: -0.233009
-Stationary Gene Final Mean: 0.0661362
-Expressed Gene Final Mean: 0.369697
+Suppressed Gene Final Mean: -0.307215
+Stationary Gene Final Mean: -0.00794142
+Expressed Gene Final Mean: 0.29642
 Criteria: 0
-number of suppressed genes: 1130
-number of stationary genes: 3642
-number of expressed genes: 1346
+The number of Stationary Genes: 3651
+The number of Suppressed Genes: 1135
+The number of Expressed Genes: 1332
+number of suppressed genes: 1135
+number of stationary genes: 3651
+number of expressed genes: 1332
 
 Time point 3:
-Suppressed Gene Final Mean: -0.226354
-Stationary Gene Final Mean: 0.107094
-Expressed Gene Final Mean: 0.605078
+Suppressed Gene Final Mean: -0.296211
+Stationary Gene Final Mean: 0.0372371
+Expressed Gene Final Mean: 0.535221
 Criteria: 0
+The number of Stationary Genes: 3773
+The number of Suppressed Genes: 1652
+The number of Expressed Genes: 693
 number of suppressed genes: 1652
 number of stationary genes: 3773
 number of expressed genes: 693
 
 Time point 4:
-Suppressed Gene Final Mean: -0.333036
-Stationary Gene Final Mean: 0.0846727
-Expressed Gene Final Mean: 0.74687
+Suppressed Gene Final Mean: -0.376159
+Stationary Gene Final Mean: 0.0415508
+Expressed Gene Final Mean: 0.703748
 Criteria: 0
+The number of Stationary Genes: 3466
+The number of Suppressed Genes: 1954
+The number of Expressed Genes: 698
 number of suppressed genes: 1954
 number of stationary genes: 3466
 number of expressed genes: 698
 
 Time point 5:
-Suppressed Gene Final Mean: -0.273956
-Stationary Gene Final Mean: 0.0799577
-Expressed Gene Final Mean: 0.696614
+Suppressed Gene Final Mean: -0.321588
+Stationary Gene Final Mean: 0.0323263
+Expressed Gene Final Mean: 0.648982
 Criteria: 0
+The number of Stationary Genes: 3486
+The number of Suppressed Genes: 2008
+The number of Expressed Genes: 624
 number of suppressed genes: 2008
 number of stationary genes: 3486
 number of expressed genes: 624
 
 Time point 6:
-Suppressed Gene Final Mean: -0.259091
-Stationary Gene Final Mean: 0.077716
-Expressed Gene Final Mean: 0.779896
+Suppressed Gene Final Mean: -0.315259
+Stationary Gene Final Mean: 0.0215493
+Expressed Gene Final Mean: 0.723729
 Criteria: 0
+The number of Stationary Genes: 3261
+The number of Suppressed Genes: 2350
+The number of Expressed Genes: 507
 number of suppressed genes: 2350
 number of stationary genes: 3261
 number of expressed genes: 507

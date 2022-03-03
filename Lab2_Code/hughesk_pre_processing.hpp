@@ -1,5 +1,5 @@
 /* Name: Kelsey Hughes
-   Date: 3/2/22
+   Date: 2/18/22
    Details: This is a header file that will call declaration of the namespace and class.
    The function will calculate the log intensity of normalized data
 */

@@ -1,3 +1,9 @@
+/* Name: Kelsey Hughes
+   Date: 2/18/22
+   Details: This is a header file that will call declaration of the namespace and class.
+   The function will calculate the log intensity of normalized data
+*/
+
 #include "hughesk_pre_processing.hpp"
 #include "hughesk_vector_ops.hpp"
 #include "hughesk_stats.hpp"
@@ -93,8 +99,8 @@ int main(int argc, char* argv[]){
 	int genes = arg; 
    // int genes = 6118;
 
-    if(argc > 8) {
-		std::cout << "Incorrect arguments. Exiting program.\n";
+    if(argc > 7) {
+		std::cout << "Incorrect number of arguments. Exiting program.\n";
 		return 0; 
 	}
 
@@ -146,6 +152,10 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
+    /*if(dataPoint1 != dataPoint2 != dataPoint3 != dataPoint4){
+        std::cout << "The input files are not the same size." << "\n";
+        return 0;
+    }*/
     //std::cout << "data point4: " << dataPoint4 << "\n";
     //check that the number of genes requested 
     int num = 6188;
@@ -187,8 +197,8 @@ int main(int argc, char* argv[]){
     std::vector<float> greenNorm;
     std::vector<float> redNorm;
 
-    meanRed = stattyData.getMean(&array1, redData);
-    meanGreen = stattyData.getMean(&array3, greenData);
+    meanRed = stattyData.getMean(&sub1, redData);
+    meanGreen = stattyData.getMean(&sub2, greenData);
 
 
     //normalize the corrected green  and red data by the green dataset mean
@@ -210,12 +220,17 @@ int main(int argc, char* argv[]){
     outFile5.open(outfile);
 
     float dat = 0;
-/*
+
+    std::ofstream logFile;
+    
+    std::string c;
+    c = "logtest.txt";
+    logFile.open(c);
     //for testing purposes
     for(int counter=0; counter<6118; counter++){
-        std::cout << "Log Ratio : " << logRatio[counter] << "\n";
+         logFile << logRatio[counter] << "\n";
     }
-   */ 
+    
     if(outFile5.is_open()){
         //putting log ratio
         for(int count=0;count<redData;count++){

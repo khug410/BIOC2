@@ -1,3 +1,8 @@
+/* Name: Kelsey Hughes
+   Date: 2/24/2022
+   Details: This is the cpp file that will declare the logicfor the cluster class. 
+   This will separate the data into three different clusters after going through the kmeans algorithm.
+*/
 #include "hughesk_k_means.hpp"
 #include "hughesk_stats.hpp" 
 
@@ -62,6 +67,13 @@ int main(int argc, char* argv[]){
     //open both the data files
     int fileOneSize =0;
     float num;
+
+
+    //error checking for incorrect number of arguments 
+    if(argc > 2) {
+		std::cout << "Incorrect number of arguments. Exiting program.\n";
+		return 0; 
+	}
 
 
     if(logStream.is_open()){
