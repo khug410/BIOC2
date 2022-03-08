@@ -1,4 +1,8 @@
-grep -w float GabeTheBabe::StatsBro RohdeG_stats.cpp{}{}{}float GabeTheBabe::StatsBro::meanValue(std::vector<float>* data, int size){
-float GabeTheBabe::StatsBro::standardDev(std::vector<float>* data, int size, float average){
-float GabeTheBabe::StatsBro::minVal(std::vector<float>* data, int size){
-float GabeTheBabe::StatsBro::maxValue(std::vector<float>* data, int size){
+meanValue(std::vector<float>* data, int size)
+standardDev(std::vector<float>* data, int size, float average)
+minVal(std::vector<float>* data, int size)
+maxValue(std::vector<float>* data, int size)
+allStats(float avg, float stddev, float min, float max)
+StatsBro::getHist(std::vector<float>* data, int size, float avg, float stddev)
+namespace:
+GabeTheBabe 

@@ -1,0 +1,20 @@
+-------------------------------------
+This code describes the backend of our application.
+It describes all operation of all of the underlying threads that run
+ehind the scences.
+-------------------------------------
+@author Robert F Cooper <robert.cooper@marquette.edu>
+@version 1.3
+-------------------------------------
+@var size: The size of our threadPool.
+-------------------------------------
+Constructor:
+The constructor takes in the number of threads
+and spawns them, relying on
+-------------------------------------
+GetPoolSize:
+@return: the number of threads allowed in our pool.
+-------------------------------------
+BatchResult
+DEPRECIATED
+-------------------------------------

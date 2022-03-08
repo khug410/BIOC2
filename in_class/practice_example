@@ -1,0 +1,41 @@
+#!/bin/bash
+#echo "2+2+2.5" | bc -l
+
+#example in class 
+readarray -t < good_movies.txt
+readarray -t cap < good_movies.txt
+echo $cap
+echo ${cap[1]}
+
+readarray -t cap < "good_movies.txt"
+
+#echo ${cap[1]}
+
+lookfor="r"
+
+for (( i=0;i< ${#cap[@]}; i++ ))
+do 
+  #go through all of these to look for a specific thing
+  echo "Does Captain ${caps[$i]} contain a $lookfor?"
+  
+
+  howmany=$(echo ${cap[$i]} | grep "$lookfor" -c)
+  #echo $howmany
+  total=0
+  if [[ $howmany -ne 0 ]] 
+  then
+    #echo "$total+$howmany = ?"
+    echo this $howmany
+    #echo this2 $total
+    total=$(echo "$total+$howmany" | bc -l)
+    #$total=$total+1
+  fi
+  echo $total
+done
+
+#dates, first you got to grab the date column then grab out the year, the month, the day (cut)
+#if the subtraction of the days is not equal to 0 then its a new month
+#new country if its not equal to the previous row
+#create smaller subset arrays
+    
+
